@@ -1,12 +1,9 @@
-// Usage Examples
-//
-// LMS demo
-// removes 50Hz from an ECG with a powerline reference
-// here generated with a simple sine. Should be ideally
-// also measured with another ADC channel and fed into
-// the filter.
+// LMS using fir1 library
+// the idea is to remove EMG noise from ECG
+// an input signal EMG is used in the fir filter, 
+// tthis signal is then substracted from the recorded ECG
 
-// This is the only include you need
+// inclide the fir library
 #include "Fir1.h"
 
 #define _USE_MATH_DEFINES
@@ -39,7 +36,7 @@ int main (int,char**)
         if (fscanf(noise,"%lf\n",&ref_noise)<1) break;
         // finput and noise go directly to fir, add 2 instances of iir filter before 
 		//double ref_noise = sin(2*M_PI/20*i);
-		double canceller = fir.filter(ref_noise);
+		double canceller = fir.filter(ref_noise); //check 
 		double output_signal = input_signal - canceller;
 		fir.lms_update(output_signal);
 		fprintf(foutput,"%f %f %f\n",output_signal,canceller,ref_noise);

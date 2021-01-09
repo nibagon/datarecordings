@@ -10,4 +10,4 @@ np.savetxt("ecg_noise.dat",ecg)
 
 #select data from cha2 noise (DIO2)
 noise=data[:,9]
-np.savetxt("just_noise.dat",ecg)
+np.savetxt("just_noise.dat",noise)
