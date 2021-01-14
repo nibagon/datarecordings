@@ -79,6 +79,8 @@ datarecordings_EXTERNAL_OBJECTS =
 
 datarecordings: CMakeFiles/datarecordings.dir/lmsfilter.cpp.o
 datarecordings: CMakeFiles/datarecordings.dir/build.make
+datarecordings: /usr/local/lib/libiir.so.1.7.8
+datarecordings: /usr/local/lib/libiir_static.a
 datarecordings: CMakeFiles/datarecordings.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/natalia/disertation/datarecordings/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable datarecordings"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/datarecordings.dir/link.txt --verbose=$(VERBOSE)
