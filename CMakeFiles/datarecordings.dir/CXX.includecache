@@ -9,6 +9,8 @@
 /home/natalia/disertation/datarecordings/lmsfilter.cpp
 Fir1.h
 /home/natalia/disertation/datarecordings/Fir1.h
+Iir.h
+/home/natalia/disertation/datarecordings/Iir.h
 stdio.h
 -
 math.h

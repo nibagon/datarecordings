@@ -336,6 +336,9 @@ datarecordings_BINARY_DIR:STATIC=/home/natalia/disertation/datarecordings
 //Value Computed by CMake
 datarecordings_SOURCE_DIR:STATIC=/home/natalia/disertation/datarecordings
 
+//The directory containing a CMake configuration file for iir.
+iir_DIR:PATH=/usr/local/lib/cmake/iir
+
 
 ########################
 # INTERNAL cache entries

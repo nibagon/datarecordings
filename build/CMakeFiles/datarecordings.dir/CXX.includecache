@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/natalia/disertation/datarecordings/main.cpp
-iostream
+/home/natalia/disertation/datarecordings/lmsfilter.cpp
+Fir1.h
+/home/natalia/disertation/datarecordings/Fir1.h
+stdio.h
+-
+math.h
 -
 
