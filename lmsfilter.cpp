@@ -35,8 +35,8 @@ int main (int,char**)
 	{
 		double input_signal;
         double ref_noise;		
-		if (fscanf(finput,"%le\n",&input_signal)<1) break;
-    	fscanf(noise,"%le\n",&ref_noise);
+		if (fscanf(finput,"%le\n",&input_signal)<1) break; //fscanf(finput,"%e\t%e\t%e\n",&s1,s2,s3)  fscanf("%e\t%e\t%e... 
+    	if (fscanf(noise,"%le\n",&ref_noise)<1) break;
 
         // finput and noise go directly to fir, add 2 instances of iir filter before 
 		//double ref_noise = sin(2*M_PI/20*i);

@@ -867,7 +867,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "datarecordings"
+			"value" : "lmsfilter"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION",
@@ -1954,6 +1954,18 @@
 			"value" : "/home/natalia/disertation/datarecordings"
 		},
 		{
+			"name" : "fir_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for fir."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/usr/lib/cmake/fir"
+		},
+		{
 			"name" : "iir_DIR",
 			"properties" : 
 			[
@@ -1964,6 +1976,30 @@
 			],
 			"type" : "PATH",
 			"value" : "/usr/local/lib/cmake/iir"
+		},
+		{
+			"name" : "lmsfilter_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/natalia/disertation/datarecordings/build"
+		},
+		{
+			"name" : "lmsfilter_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/natalia/disertation/datarecordings"
 		}
 	],
 	"kind" : "cache",

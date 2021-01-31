@@ -151,7 +151,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=datarecordings
+CMAKE_PROJECT_NAME:STATIC=lmsfilter
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1.0
@@ -336,8 +336,17 @@ datarecordings_BINARY_DIR:STATIC=/home/natalia/disertation/datarecordings
 //Value Computed by CMake
 datarecordings_SOURCE_DIR:STATIC=/home/natalia/disertation/datarecordings
 
+//The directory containing a CMake configuration file for fir.
+fir_DIR:PATH=/usr/lib/cmake/fir
+
 //The directory containing a CMake configuration file for iir.
 iir_DIR:PATH=/usr/local/lib/cmake/iir
+
+//Value Computed by CMake
+lmsfilter_BINARY_DIR:STATIC=/home/natalia/disertation/datarecordings
+
+//Value Computed by CMake
+lmsfilter_SOURCE_DIR:STATIC=/home/natalia/disertation/datarecordings
 
 
 ########################

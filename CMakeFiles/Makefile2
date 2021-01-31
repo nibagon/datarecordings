@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /home/natalia/disertation/datarecordings
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/datarecordings.dir/all
+all: CMakeFiles/lmsfilter.dir/all
 
 .PHONY : all
 
@@ -63,36 +63,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/datarecordings.dir/clean
+clean: CMakeFiles/lmsfilter.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/datarecordings.dir
+# Target rules for target CMakeFiles/lmsfilter.dir
 
 # All Build rule for target.
-CMakeFiles/datarecordings.dir/all:
-	$(MAKE) -f CMakeFiles/datarecordings.dir/build.make CMakeFiles/datarecordings.dir/depend
-	$(MAKE) -f CMakeFiles/datarecordings.dir/build.make CMakeFiles/datarecordings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/CMakeFiles --progress-num=1,2 "Built target datarecordings"
-.PHONY : CMakeFiles/datarecordings.dir/all
+CMakeFiles/lmsfilter.dir/all:
+	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/depend
+	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/CMakeFiles --progress-num=1,2 "Built target lmsfilter"
+.PHONY : CMakeFiles/lmsfilter.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/datarecordings.dir/rule: cmake_check_build_system
+CMakeFiles/lmsfilter.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/datarecordings.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lmsfilter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/CMakeFiles 0
-.PHONY : CMakeFiles/datarecordings.dir/rule
+.PHONY : CMakeFiles/lmsfilter.dir/rule
 
 # Convenience name for target.
-datarecordings: CMakeFiles/datarecordings.dir/rule
+lmsfilter: CMakeFiles/lmsfilter.dir/rule
 
-.PHONY : datarecordings
+.PHONY : lmsfilter
 
 # clean rule for target.
-CMakeFiles/datarecordings.dir/clean:
-	$(MAKE) -f CMakeFiles/datarecordings.dir/build.make CMakeFiles/datarecordings.dir/clean
-.PHONY : CMakeFiles/datarecordings.dir/clean
+CMakeFiles/lmsfilter.dir/clean:
+	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/clean
+.PHONY : CMakeFiles/lmsfilter.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
