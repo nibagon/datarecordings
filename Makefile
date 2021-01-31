@@ -56,6 +56,17 @@ CMAKE_BINARY_DIR = /home/natalia/disertation/datarecordings
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
@@ -88,17 +99,6 @@ package: preinstall
 package/fast: package
 
 .PHONY : package/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -133,17 +133,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named datarecordings
+# Target rules for targets named lmsfilter
 
 # Build rule for target.
-datarecordings: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 datarecordings
-.PHONY : datarecordings
+lmsfilter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lmsfilter
+.PHONY : lmsfilter
 
 # fast build rule for target.
-datarecordings/fast:
-	$(MAKE) -f CMakeFiles/datarecordings.dir/build.make CMakeFiles/datarecordings.dir/build
-.PHONY : datarecordings/fast
+lmsfilter/fast:
+	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/build
+.PHONY : lmsfilter/fast
 
 lmsfilter.o: lmsfilter.cpp.o
 
@@ -151,7 +151,7 @@ lmsfilter.o: lmsfilter.cpp.o
 
 # target to build an object file
 lmsfilter.cpp.o:
-	$(MAKE) -f CMakeFiles/datarecordings.dir/build.make CMakeFiles/datarecordings.dir/lmsfilter.cpp.o
+	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o
 .PHONY : lmsfilter.cpp.o
 
 lmsfilter.i: lmsfilter.cpp.i
@@ -160,7 +160,7 @@ lmsfilter.i: lmsfilter.cpp.i
 
 # target to preprocess a source file
 lmsfilter.cpp.i:
-	$(MAKE) -f CMakeFiles/datarecordings.dir/build.make CMakeFiles/datarecordings.dir/lmsfilter.cpp.i
+	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/lmsfilter.cpp.i
 .PHONY : lmsfilter.cpp.i
 
 lmsfilter.s: lmsfilter.cpp.s
@@ -169,7 +169,7 @@ lmsfilter.s: lmsfilter.cpp.s
 
 # target to generate assembly for a file
 lmsfilter.cpp.s:
-	$(MAKE) -f CMakeFiles/datarecordings.dir/build.make CMakeFiles/datarecordings.dir/lmsfilter.cpp.s
+	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/lmsfilter.cpp.s
 .PHONY : lmsfilter.cpp.s
 
 # Help Target
@@ -178,11 +178,11 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... edit_cache"
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... package"
-	@echo "... edit_cache"
-	@echo "... datarecordings"
+	@echo "... lmsfilter"
 	@echo "... lmsfilter.o"
 	@echo "... lmsfilter.i"
 	@echo "... lmsfilter.s"
