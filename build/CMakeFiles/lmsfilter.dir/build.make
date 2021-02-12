@@ -60,15 +60,15 @@ include CMakeFiles/lmsfilter.dir/flags.make
 CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o: CMakeFiles/lmsfilter.dir/flags.make
 CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o: ../lmsfilter.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/natalia/disertation/datarecordings/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o"
-	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o -c /home/natalia/disertation/datarecordings/lmsfilter.cpp
+	/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o -c /home/natalia/disertation/datarecordings/lmsfilter.cpp
 
 CMakeFiles/lmsfilter.dir/lmsfilter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lmsfilter.dir/lmsfilter.cpp.i"
-	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/disertation/datarecordings/lmsfilter.cpp > CMakeFiles/lmsfilter.dir/lmsfilter.cpp.i
+	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/natalia/disertation/datarecordings/lmsfilter.cpp > CMakeFiles/lmsfilter.dir/lmsfilter.cpp.i
 
 CMakeFiles/lmsfilter.dir/lmsfilter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lmsfilter.dir/lmsfilter.cpp.s"
-	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/disertation/datarecordings/lmsfilter.cpp -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.s
+	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/natalia/disertation/datarecordings/lmsfilter.cpp -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.s
 
 # Object files for target lmsfilter
 lmsfilter_OBJECTS = \
@@ -79,8 +79,6 @@ lmsfilter_EXTERNAL_OBJECTS =
 
 lmsfilter: CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o
 lmsfilter: CMakeFiles/lmsfilter.dir/build.make
-lmsfilter: /usr/local/lib/libiir.so.1.7.8
-lmsfilter: /usr/local/lib/libiir_static.a
 lmsfilter: CMakeFiles/lmsfilter.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/natalia/disertation/datarecordings/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable lmsfilter"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lmsfilter.dir/link.txt --verbose=$(VERBOSE)

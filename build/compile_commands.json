@@ -1,7 +1,12 @@
 [
 {
   "directory": "/home/natalia/disertation/datarecordings/build",
-  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o -c /home/natalia/disertation/datarecordings/lmsfilter.cpp",
+  "command": "/bin/g++-9    -g   -o CMakeFiles/butterworth.dir/butterworth.cpp.o -c /home/natalia/disertation/datarecordings/butterworth.cpp",
+  "file": "/home/natalia/disertation/datarecordings/butterworth.cpp"
+},
+{
+  "directory": "/home/natalia/disertation/datarecordings/build",
+  "command": "/bin/g++-9    -g   -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o -c /home/natalia/disertation/datarecordings/lmsfilter.cpp",
   "file": "/home/natalia/disertation/datarecordings/lmsfilter.cpp"
 }
 ]

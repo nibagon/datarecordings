@@ -1,57 +1,72 @@
+// inclide the fir library
+#include "Fir1.h"
 #include "Iir.h"
+//#include <butterworth.h> not necessary 
 
+#define _USE_MATH_DEFINES
 #include <stdio.h>
+#include <math.h>
 
-#include "assert_print.h"
+#define NTAPS 100
+#define LEARNING_RATE 0.5//fid a way of calculating this learning rate 
 
 int main (int,char**)
 {
-    Iir::Butterworth::BandPass<4> name;
-    double sampleRate = 500;
-    double centerFrequency = 245;
-    double widthFrequency = 490;
+	// Declared all the filters that will be used 
 
-    name.setup (sampleRate, centerFrequency,widthFrequency);
+	Fir1 fir(NTAPS);
+	fir.setLearningRate(LEARNING_RATE);
+	const float samplingrate = 250; // Hz
 
+    const float mains = 50;
+	Iir::RBJ::IIRNotch iirnotch;
+	iirnotch.setup(samplingrate,mains);//48-52 instead of notch
 
-	// create the filter structure for 3rd order
-	Iir::Butterworth::LowPass<3> f;
-
+	Iir::Butterworth::LowPass<4> lp;//
 	// filter parameters
-	const float samplingrate = 1000; // Hz
-	const float cutoff_frequency = 5; // Hz
+	const float cutoff_low = 120; // Hz
+	lp.setup (samplingrate, cutoff_low);
 
-	// calc the coefficients
-	f.setup (samplingrate, cutoff_frequency);
+	Iir::Butterworth::HighPass<4> hpecg;//maybe use the same
+	const float cutoff_hecg = 0.5; // start cleaning from 0.5 remember fundamental frequency of ECG starts from 1hz
+	hpecg.setup (samplingrate, cutoff_hecg);
+
+	Iir::Butterworth::HighPass<4> hpemg;
+	const float cutoff_hemg = 50; // Hz
+	hpemg.setup (samplingrate, cutoff_hemg);
 	
-	double b = 0;
-	double b2 = 0;
-	for(int i=0;i<1000000;i++) 
-	{
-		float a=0;
-		if (i==10) a = 1;
-		b2 = b;
-		b = f.filter(a);
-		assert_print(!isnan(b),"Lowpass output is NAN\n");
-		if ((i>20) && (i<100))
-			assert_print((b != 0) || (b2 != 0),
-				     "Lowpass output is zero\n");
-	}
-	assert_print(fabs(b) < 1E-25,"Lowpass value for t->inf to high!");
+	FILE *finput = fopen("unfiltered_data2.dat","rt");//where data is extracted
+    FILE *foutput = fopen("ecg_filtered.dat","wt");//where data is saved
 
-	Iir::Butterworth::BandStop<4,Iir::DirectFormI> bs;
-	const float center_frequency = 50;
-	const float frequency_width = 5;
-	bs.setup (samplingrate, center_frequency, frequency_width);
-	bs.reset ();
-	for(int i=0;i<10000;i++) 
+	for(int i=0;;i++) 
 	{
-		float a=0;
-		if (i==10) a = 1;
-		b = bs.filter(a);
-		assert_print(!isnan(b),"Bandstop output is NAN\n");
-		//fprintf(stderr,"%e\n",b);
+		float ECG;
+        float EMG;	
+		float time;	
+		if (fscanf(finput,"%e\t%e\t%e\n" ,&time,&ECG,&EMG)<1) break;
+
+		ECG=iirnotch.filter(ECG);
+		EMG=iirnotch.filter(EMG);
+
+		double ecg_high;
+		double ecg_low;
+		double emg_high;
+		double emg_low;
+
+		ecg_low=lp.filter(ECG);
+		emg_low=lp.filter(EMG);
+
+		ecg_high=hpecg.filter(ecg_low);
+		emg_high=hpemg.filter(emg_low);
+
+		double canceller = fir.filter(emg_high); //check 
+		double output_signal = ecg_high - canceller;
+		fir.lms_update(output_signal);
+		fprintf(foutput,"%e %e %e %e %e %e\n",time,output_signal,canceller,emg_high,ecg_high,ECG);
 	}
-	assert_print(fabs(b) < 1E-25,"Bandstop value for t->inf to high!");
+	fclose(finput);
+    //fclose(noise);
+	fclose(foutput);
+	fprintf(stderr,"Written the filtered ECG to 'ecg_filtered.dat'\n");
 	return 0;
 }

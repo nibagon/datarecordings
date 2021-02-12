@@ -2,4 +2,5 @@
 /home/natalia/disertation/datarecordings/build/CMakeFiles/package_source.dir
 /home/natalia/disertation/datarecordings/build/CMakeFiles/rebuild_cache.dir
 /home/natalia/disertation/datarecordings/build/CMakeFiles/package.dir
+/home/natalia/disertation/datarecordings/build/CMakeFiles/butterworth.dir
 /home/natalia/disertation/datarecordings/build/CMakeFiles/lmsfilter.dir

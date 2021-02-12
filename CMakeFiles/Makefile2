@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /home/natalia/disertation/datarecordings
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/butterworth.dir/all
 all: CMakeFiles/lmsfilter.dir/all
 
 .PHONY : all
@@ -63,9 +64,37 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/butterworth.dir/clean
 clean: CMakeFiles/lmsfilter.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/butterworth.dir
+
+# All Build rule for target.
+CMakeFiles/butterworth.dir/all:
+	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/depend
+	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/CMakeFiles --progress-num=1,2 "Built target butterworth"
+.PHONY : CMakeFiles/butterworth.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/butterworth.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/butterworth.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/CMakeFiles 0
+.PHONY : CMakeFiles/butterworth.dir/rule
+
+# Convenience name for target.
+butterworth: CMakeFiles/butterworth.dir/rule
+
+.PHONY : butterworth
+
+# clean rule for target.
+CMakeFiles/butterworth.dir/clean:
+	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/clean
+.PHONY : CMakeFiles/butterworth.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/lmsfilter.dir
@@ -74,7 +103,7 @@ clean: CMakeFiles/lmsfilter.dir/clean
 CMakeFiles/lmsfilter.dir/all:
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/depend
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/CMakeFiles --progress-num=1,2 "Built target lmsfilter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/CMakeFiles --progress-num=3,4 "Built target lmsfilter"
 .PHONY : CMakeFiles/lmsfilter.dir/all
 
 # Build rule for subdir invocation for target.

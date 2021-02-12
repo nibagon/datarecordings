@@ -133,6 +133,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named butterworth
+
+# Build rule for target.
+butterworth: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 butterworth
+.PHONY : butterworth
+
+# fast build rule for target.
+butterworth/fast:
+	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/build
+.PHONY : butterworth/fast
+
+#=============================================================================
 # Target rules for targets named lmsfilter
 
 # Build rule for target.
@@ -144,6 +157,33 @@ lmsfilter: cmake_check_build_system
 lmsfilter/fast:
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/build
 .PHONY : lmsfilter/fast
+
+butterworth.o: butterworth.cpp.o
+
+.PHONY : butterworth.o
+
+# target to build an object file
+butterworth.cpp.o:
+	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/butterworth.cpp.o
+.PHONY : butterworth.cpp.o
+
+butterworth.i: butterworth.cpp.i
+
+.PHONY : butterworth.i
+
+# target to preprocess a source file
+butterworth.cpp.i:
+	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/butterworth.cpp.i
+.PHONY : butterworth.cpp.i
+
+butterworth.s: butterworth.cpp.s
+
+.PHONY : butterworth.s
+
+# target to generate assembly for a file
+butterworth.cpp.s:
+	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/butterworth.cpp.s
+.PHONY : butterworth.cpp.s
 
 lmsfilter.o: lmsfilter.cpp.o
 
@@ -182,7 +222,11 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... package"
+	@echo "... butterworth"
 	@echo "... lmsfilter"
+	@echo "... butterworth.o"
+	@echo "... butterworth.i"
+	@echo "... butterworth.s"
 	@echo "... lmsfilter.o"
 	@echo "... lmsfilter.i"
 	@echo "... lmsfilter.s"
