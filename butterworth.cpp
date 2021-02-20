@@ -8,7 +8,7 @@
 #include <math.h>
 
 #define NTAPS 100
-#define LEARNING_RATE 0.5//fid a way of calculating this learning rate 
+#define LEARNING_RATE 0.05//fid a way of calculating this learning rate 
 
 int main (int,char**)
 {
@@ -18,20 +18,25 @@ int main (int,char**)
 	fir.setLearningRate(LEARNING_RATE);
 	const float samplingrate = 250; // Hz
 
-    const float mains = 50;
+    /*const float mains = 50;
 	Iir::RBJ::IIRNotch iirnotch;
-	iirnotch.setup(samplingrate,mains);//48-52 instead of notch
+	iirnotch.setup(samplingrate,mains);//48-52 instead of notch*/
 
-	Iir::Butterworth::LowPass<4> lp;//
+	Iir::Butterworth::BandStop<2>stop;
+	double centerFrequency=60; //change this one depending on where you are taking it
+	double widthFrequency=6;
+	stop.setup(samplingrate,centerFrequency,widthFrequency);
+
+	Iir::Butterworth::LowPass<2> lp;//
 	// filter parameters
 	const float cutoff_low = 120; // Hz
 	lp.setup (samplingrate, cutoff_low);
 
-	Iir::Butterworth::HighPass<4> hpecg;//maybe use the same
+	Iir::Butterworth::HighPass<2> hpecg;//maybe use the same
 	const float cutoff_hecg = 0.5; // start cleaning from 0.5 remember fundamental frequency of ECG starts from 1hz
 	hpecg.setup (samplingrate, cutoff_hecg);
 
-	Iir::Butterworth::HighPass<4> hpemg;
+	Iir::Butterworth::HighPass<2> hpemg;
 	const float cutoff_hemg = 50; // Hz
 	hpemg.setup (samplingrate, cutoff_hemg);
 	
@@ -45,8 +50,8 @@ int main (int,char**)
 		float time;	
 		if (fscanf(finput,"%e\t%e\t%e\n" ,&time,&ECG,&EMG)<1) break;
 
-		ECG=iirnotch.filter(ECG);
-		EMG=iirnotch.filter(EMG);
+		ECG=stop.filter(ECG);
+		EMG=stop.filter(EMG);
 
 		double ecg_high;
 		double ecg_low;
@@ -59,10 +64,13 @@ int main (int,char**)
 		ecg_high=hpecg.filter(ecg_low);
 		emg_high=hpemg.filter(emg_low);
 
+		if (time > 2) {
 		double canceller = fir.filter(emg_high); //check 
 		double output_signal = ecg_high - canceller;
 		fir.lms_update(output_signal);
 		fprintf(foutput,"%e %e %e %e %e %e\n",time,output_signal,canceller,emg_high,ecg_high,ECG);
+		}
+		
 	}
 	fclose(finput);
     //fclose(noise);
