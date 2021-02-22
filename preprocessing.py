@@ -1,4 +1,10 @@
-def clean_matrix(file):
+import numpy as np
+import pandas as pd
+import pylab as pl
+import scipy as sp
+from scipy import signal
+
+def clean_matrix(file,name):
     data=np.loadtxt(file)
     fs=250 #same for both
     #clean ECG
@@ -16,14 +22,14 @@ def clean_matrix(file):
     
     final = np.c_[ecg_hp, emg_low]
     final=np.c_[data[:,0], final]
-    np.savetxt("filtered_data.dat",final)
+    np.savetxt(name,final)
     return final
 
-def extract_matrix(file):
+def extract_matrix(file,name):
     data=np.loadtxt(file)
-    ECG=data[:,11]
-    EMG=data[:,12]
+    ECG=data[:,7]
+    EMG=data[:,8]
     final = np.c_[ECG, EMG]
     final=np.c_[data[:,0], final]
-    np.savetxt("unfiltered_data.dat",final)
+    np.savetxt(name,final)
     return final
