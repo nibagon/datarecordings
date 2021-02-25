@@ -81,6 +81,7 @@ butterworth: CMakeFiles/butterworth.dir/butterworth.cpp.o
 butterworth: CMakeFiles/butterworth.dir/build.make
 butterworth: /usr/local/lib/libiir.so.1.7.8
 butterworth: /usr/local/lib/libiir_static.a
+butterworth: clBP/libclBP.a
 butterworth: CMakeFiles/butterworth.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/natalia/disertation/datarecordings/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable butterworth"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/butterworth.dir/link.txt --verbose=$(VERBOSE)

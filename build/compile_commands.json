@@ -1,12 +1,27 @@
 [
 {
   "directory": "/home/natalia/disertation/datarecordings/build",
-  "command": "/bin/g++-9    -g   -o CMakeFiles/butterworth.dir/butterworth.cpp.o -c /home/natalia/disertation/datarecordings/butterworth.cpp",
+  "command": "/bin/g++-9   -I/home/natalia/disertation/datarecordings/clBP/include  -g   -o CMakeFiles/butterworth.dir/butterworth.cpp.o -c /home/natalia/disertation/datarecordings/butterworth.cpp",
   "file": "/home/natalia/disertation/datarecordings/butterworth.cpp"
 },
 {
   "directory": "/home/natalia/disertation/datarecordings/build",
   "command": "/bin/g++-9    -g   -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o -c /home/natalia/disertation/datarecordings/lmsfilter.cpp",
   "file": "/home/natalia/disertation/datarecordings/lmsfilter.cpp"
+},
+{
+  "directory": "/home/natalia/disertation/datarecordings/build/clBP",
+  "command": "/bin/g++-9   -I/home/natalia/disertation/datarecordings/clBP/include  -g   -std=gnu++11 -o CMakeFiles/clBP.dir/lib/Layer.cpp.o -c /home/natalia/disertation/datarecordings/clBP/lib/Layer.cpp",
+  "file": "/home/natalia/disertation/datarecordings/clBP/lib/Layer.cpp"
+},
+{
+  "directory": "/home/natalia/disertation/datarecordings/build/clBP",
+  "command": "/bin/g++-9   -I/home/natalia/disertation/datarecordings/clBP/include  -g   -std=gnu++11 -o CMakeFiles/clBP.dir/lib/Net.cpp.o -c /home/natalia/disertation/datarecordings/clBP/lib/Net.cpp",
+  "file": "/home/natalia/disertation/datarecordings/clBP/lib/Net.cpp"
+},
+{
+  "directory": "/home/natalia/disertation/datarecordings/build/clBP",
+  "command": "/bin/g++-9   -I/home/natalia/disertation/datarecordings/clBP/include  -g   -std=gnu++11 -o CMakeFiles/clBP.dir/lib/Neuron.cpp.o -c /home/natalia/disertation/datarecordings/clBP/lib/Neuron.cpp",
+  "file": "/home/natalia/disertation/datarecordings/clBP/lib/Neuron.cpp"
 }
 ]

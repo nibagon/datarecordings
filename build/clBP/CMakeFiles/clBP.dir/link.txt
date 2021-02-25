@@ -1,0 +1,2 @@
+/bin/ar qc libclBP.a  CMakeFiles/clBP.dir/lib/Layer.cpp.o CMakeFiles/clBP.dir/lib/Net.cpp.o CMakeFiles/clBP.dir/lib/Neuron.cpp.o
+/bin/ranlib libclBP.a

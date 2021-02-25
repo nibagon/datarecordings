@@ -55,25 +55,45 @@ CMAKE_BINARY_DIR = /home/natalia/disertation/datarecordings/build
 # The main recursive "all" target.
 all: CMakeFiles/butterworth.dir/all
 all: CMakeFiles/lmsfilter.dir/all
+all: clBP/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: clBP/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/butterworth.dir/clean
 clean: CMakeFiles/lmsfilter.dir/clean
+clean: clBP/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory clBP
+
+# Recursive "all" directory target.
+clBP/all: clBP/CMakeFiles/clBP.dir/all
+
+.PHONY : clBP/all
+
+# Recursive "preinstall" directory target.
+clBP/preinstall:
+
+.PHONY : clBP/preinstall
+
+# Recursive "clean" directory target.
+clBP/clean: clBP/CMakeFiles/clBP.dir/clean
+
+.PHONY : clBP/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/butterworth.dir
 
 # All Build rule for target.
-CMakeFiles/butterworth.dir/all:
+CMakeFiles/butterworth.dir/all: clBP/CMakeFiles/clBP.dir/all
 	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/depend
 	$(MAKE) -f CMakeFiles/butterworth.dir/build.make CMakeFiles/butterworth.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/build/CMakeFiles --progress-num=1,2 "Built target butterworth"
@@ -81,7 +101,7 @@ CMakeFiles/butterworth.dir/all:
 
 # Build rule for subdir invocation for target.
 CMakeFiles/butterworth.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/butterworth.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/build/CMakeFiles 0
 .PHONY : CMakeFiles/butterworth.dir/rule
@@ -103,7 +123,7 @@ CMakeFiles/butterworth.dir/clean:
 CMakeFiles/lmsfilter.dir/all:
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/depend
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/build/CMakeFiles --progress-num=3,4 "Built target lmsfilter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/build/CMakeFiles --progress-num=7,8 "Built target lmsfilter"
 .PHONY : CMakeFiles/lmsfilter.dir/all
 
 # Build rule for subdir invocation for target.
@@ -122,6 +142,33 @@ lmsfilter: CMakeFiles/lmsfilter.dir/rule
 CMakeFiles/lmsfilter.dir/clean:
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/clean
 .PHONY : CMakeFiles/lmsfilter.dir/clean
+
+#=============================================================================
+# Target rules for target clBP/CMakeFiles/clBP.dir
+
+# All Build rule for target.
+clBP/CMakeFiles/clBP.dir/all:
+	$(MAKE) -f clBP/CMakeFiles/clBP.dir/build.make clBP/CMakeFiles/clBP.dir/depend
+	$(MAKE) -f clBP/CMakeFiles/clBP.dir/build.make clBP/CMakeFiles/clBP.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/build/CMakeFiles --progress-num=3,4,5,6 "Built target clBP"
+.PHONY : clBP/CMakeFiles/clBP.dir/all
+
+# Build rule for subdir invocation for target.
+clBP/CMakeFiles/clBP.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 clBP/CMakeFiles/clBP.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/build/CMakeFiles 0
+.PHONY : clBP/CMakeFiles/clBP.dir/rule
+
+# Convenience name for target.
+clBP: clBP/CMakeFiles/clBP.dir/rule
+
+.PHONY : clBP
+
+# clean rule for target.
+clBP/CMakeFiles/clBP.dir/clean:
+	$(MAKE) -f clBP/CMakeFiles/clBP.dir/build.make clBP/CMakeFiles/clBP.dir/clean
+.PHONY : clBP/CMakeFiles/clBP.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

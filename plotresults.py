@@ -5,6 +5,7 @@ data = np.loadtxt('ecg_filtered.dat')
 pl.figure(1)
 pl.plot(data[:,0],data[:,1])
 pl.plot(data[:,0],data[:,4])
+pl.plot(data[:,0],data[:,6])
 pl.title('Output LMS')
 pl.xlabel('time/sec')
 
@@ -30,6 +31,12 @@ pl.xlabel('time/sec')
 pl.figure(5)
 pl.plot(data[:,0],data[:,5])
 pl.title('Non filtered ECG')
+pl.xlabel('time/sec')
+
+#ECG
+pl.figure(6)
+pl.plot(data[:,0],data[:,6])
+pl.title('Neural Output ECG')
 pl.xlabel('time/sec')
 
 pl.show()

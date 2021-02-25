@@ -158,6 +158,19 @@ lmsfilter/fast:
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/build
 .PHONY : lmsfilter/fast
 
+#=============================================================================
+# Target rules for targets named clBP
+
+# Build rule for target.
+clBP: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 clBP
+.PHONY : clBP
+
+# fast build rule for target.
+clBP/fast:
+	$(MAKE) -f clBP/CMakeFiles/clBP.dir/build.make clBP/CMakeFiles/clBP.dir/build
+.PHONY : clBP/fast
+
 butterworth.o: butterworth.cpp.o
 
 .PHONY : butterworth.o
@@ -224,6 +237,7 @@ help:
 	@echo "... package"
 	@echo "... butterworth"
 	@echo "... lmsfilter"
+	@echo "... clBP"
 	@echo "... butterworth.o"
 	@echo "... butterworth.i"
 	@echo "... butterworth.s"
