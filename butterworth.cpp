@@ -8,7 +8,7 @@
 #include <math.h>
 
 #define NTAPS 100
-#define LEARNING_RATE 0.05//fid a way of calculating this learning rate 
+#define LEARNING_RATE 0.5//fid a way of calculating this learning rate 
 
 int main (int,char**)
 {
@@ -70,8 +70,8 @@ int main (int,char**)
 		ecg_low=lp.filter(ECG);
 		emg_low=lp.filter(EMG);*/
 
-		ecg_high=hpecg.filter(ECG);
-		emg_high=hpemg.filter(EMG);
+		ecg_high=1000 * hpecg.filter(ECG);
+		emg_high=1000 * hpemg.filter(EMG);
 
 		if (time > 2) {
 		double canceller = fir.filter(emg_high); 

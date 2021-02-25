@@ -4,6 +4,7 @@ import pylab as pl
 data = np.loadtxt('ecg_filtered.dat')
 pl.figure(1)
 pl.plot(data[:,0],data[:,1])
+pl.plot(data[:,0],data[:,4])
 pl.title('Output LMS')
 pl.xlabel('time/sec')
 
