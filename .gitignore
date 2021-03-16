@@ -12,3 +12,11 @@ lmsfilter
 Makefile
 
 CMakeFiles/
+
+lmsfilter.cbp
+
+ecg_filtered.dat
+
+.idea/
+
+Testing/
