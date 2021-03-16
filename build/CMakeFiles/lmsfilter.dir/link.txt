@@ -1,1 +1,0 @@
-/bin/g++-9  -g  -rdynamic CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o  -o lmsfilter  -lfir 
