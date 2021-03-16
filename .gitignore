@@ -17,6 +17,10 @@ lmsfilter.cbp
 
 ecg_filtered.dat
 
+*.txt
+
+libclBP.a
+
 .idea/
 
 Testing/
