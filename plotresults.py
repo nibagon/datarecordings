@@ -27,6 +27,7 @@ lmsin_emg=datalms[:,3]
 
 lmstime=datalms[:,0]
 
+'''
 pl.figure(1)
 plot_FFT(lmsraw_ecg,samplingFrequency)
 plot_FFT(lmsin_ecg/1000,samplingFrequency)
@@ -42,6 +43,7 @@ pl.plot(lmstime,lmsin_ecg)
 pl.plot(lmstime,lmsout_ecg)
 pl.title('Output LMS vs input prefiltered ECG data')
 pl.xlabel('time/sec')
+'''
 '''
 pl.figure(1)
 pl.plot(datalms[:,0],datalms[:,1])
@@ -62,6 +64,7 @@ in_emg=datadnf[:,3]
 
 time=datadnf[:,0]
 
+'''
 pl.figure(4)
 plot_FFT(raw_ecg,samplingFrequency)
 plot_FFT(in_ecg,samplingFrequency)
@@ -72,8 +75,9 @@ pl.figure(5)
 plot_FFT(raw_emg,samplingFrequency)
 plot_FFT(in_emg,samplingFrequency)
 pl.title('EMG DNF fourier transform')
+'''
 
-pl.figure(6)
+pl.figure(1)
 pl.plot(time,in_ecg)
 pl.plot(time,out_ecg)
 pl.title('Output DNF vs input prefiltered ECG data')

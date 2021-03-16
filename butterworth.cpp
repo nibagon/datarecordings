@@ -24,7 +24,7 @@ int main (int,char**)
 
 	// define gains
 	double errorGain = 1;
-	double outputGain = 1000; //0.005; changes
+	double outputGain = 0.001; //0.005; changes
 
 	//initialise the network
     net->initWeights(Neuron::W_RANDOM, Neuron::B_NONE);
