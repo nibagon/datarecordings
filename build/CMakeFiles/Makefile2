@@ -120,7 +120,7 @@ CMakeFiles/butterworth.dir/clean:
 # Target rules for target CMakeFiles/lmsfilter.dir
 
 # All Build rule for target.
-CMakeFiles/lmsfilter.dir/all:
+CMakeFiles/lmsfilter.dir/all: clBP/CMakeFiles/clBP.dir/all
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/depend
 	$(MAKE) -f CMakeFiles/lmsfilter.dir/build.make CMakeFiles/lmsfilter.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/natalia/disertation/datarecordings/build/CMakeFiles --progress-num=7,8 "Built target lmsfilter"
@@ -128,7 +128,7 @@ CMakeFiles/lmsfilter.dir/all:
 
 # Build rule for subdir invocation for target.
 CMakeFiles/lmsfilter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lmsfilter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/natalia/disertation/datarecordings/build/CMakeFiles 0
 .PHONY : CMakeFiles/lmsfilter.dir/rule

@@ -10,50 +10,43 @@
 #define _USE_MATH_DEFINES
 #include <stdio.h>
 #include <math.h>
-
+/*
 #define NTAPS 100
 #define LEARNING_RATE 0.05//fid a way of calculating this learning rate 
-
+*/
 int main (int,char**)
 {
 	int totalNINPUTS = NINPUTS;
 	//initialise network
-	int nNeurons[NLAYERS]={N1,N2,N3};
+	int nNeurons[NLAYERS]={N1,N2,N3,N4,N5};//change this for th eno. of neurons
 	int* nNeuronsp=nNeurons;
 	Net* net = new Net(NLAYERS, nNeuronsp, totalNINPUTS);
 
 	// define gains
 	double errorGain = 1;
-	double outputGain = 1;
+	double outputGain = 1000; //0.005; changes
+
 	//initialise the network
     net->initWeights(Neuron::W_RANDOM, Neuron::B_NONE);
     net->setLearningRate(LEARNINGRATE);
 
-
-
+	/*
 	Fir1 fir(NTAPS);
-	fir.setLearningRate(LEARNING_RATE);
+	fir.setLearningRate(LEARNING_RATE);*/
+	
 	const float samplingrate = 250; // Hz
-
-    /*const float mains = 50;
-	Iir::RBJ::IIRNotch iirnotch;
-	iirnotch.setup(samplingrate,mains);//48-52 instead of notch*/
-
-	Iir::Butterworth::BandStop<2>stop50;
+	//Iir::RBJ::IIRNotch stop50;
+	Iir::Butterworth::BandStop<6>stop50;
 	double centerFrequency50=50; //change this one depending on where you are taking it
 	double widthFrequency50=6;
 	stop50.setup(samplingrate,centerFrequency50,widthFrequency50);
+	//stop50.setup(samplingrate,centerFrequency50);
 
-	Iir::Butterworth::BandStop<2>stop100;
+	Iir::Butterworth::BandStop<6>stop100;
 	double centerFrequency100=100; //change this one depending on where you are taking it
 	double widthFrequency100=6;
 	stop100.setup(samplingrate,centerFrequency100,widthFrequency100);
 	
-	/*
-	Iir::Butterworth::LowPass<2> lp;//
-	const float cutoff_low = 120; // Hz
-	lp.setup (samplingrate, cutoff_low);*/
-
 	Iir::Butterworth::HighPass<2> hpecg;//maybe use the same
 	const float cutoff_hecg = 1; // start cleaning from 0.5 remember fundamental frequency of ECG starts from 1hz
 	hpecg.setup (samplingrate, cutoff_hecg);
@@ -67,8 +60,6 @@ int main (int,char**)
 	
 	FILE *finput = fopen("data/data2.21/bicep0.dat","rt");//where data is extracted
     FILE *foutput = fopen("ecg_filtered.dat","wt");//where data is saved
-
-
 
 	for(int i=0;;i++) 
 	{
@@ -88,17 +79,15 @@ int main (int,char**)
 
 		ecg100=stop100.filter(ecg50);
 		emg100=stop100.filter(emg50);
-		/*
-		ecg_low=lp.filter(ECG);
-		emg_low=lp.filter(EMG);*/
 
-		ecg_high=1 * hpecg.filter(ECG);
-		emg_high=1 * hpemg.filter(EMG);
+		ecg_high=0.001 * hpecg.filter(ecg100);
+		emg_high=0.001 * hpemg.filter(emg100);
 
-		if (time > 2) {
+		if (time > 2.5) {
+		/*	
 		double canceller = fir.filter(emg_high); 
 		double output_signal = ecg_high - canceller;
-		fir.lms_update(output_signal);
+		fir.lms_update(output_signal);*/
 		
 	    
 		for (int i=totalNINPUTS; i>0; i--){
@@ -120,8 +109,8 @@ int main (int,char**)
         net->updateWeights();
         net->saveWeights();
         double weightDist = net->getWeightDistance();
-
-		fprintf(foutput,"%e %e %e %e %e %e %e %e\n",time,output_signal,canceller,emg_high,ecg_high,ECG,leadError,outPut);
+												//0  ,1         ,2     ,3       ,4       ,5  ,6 
+		fprintf(foutput,"%e %e %e %e %e %e %e\n",time,leadError,outPut,emg_high,ecg_high,ECG,EMG);
 		}
 		
 	}

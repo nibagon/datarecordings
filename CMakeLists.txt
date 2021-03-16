@@ -5,6 +5,10 @@ add_subdirectory(clBP)
 
 add_executable(lmsfilter lmsfilter.cpp)
 target_link_libraries(lmsfilter fir) 
+find_package(iir)
+target_link_libraries(lmsfilter iir::iir)
+target_link_libraries(lmsfilter iir::iir_static)
+target_link_libraries(lmsfilter fir clBP) 
 
 
 add_executable(butterworth butterworth.cpp parameters.h)

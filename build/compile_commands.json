@@ -6,7 +6,7 @@
 },
 {
   "directory": "/home/natalia/disertation/datarecordings/build",
-  "command": "/bin/g++-9    -g   -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o -c /home/natalia/disertation/datarecordings/lmsfilter.cpp",
+  "command": "/bin/g++-9   -I/home/natalia/disertation/datarecordings/clBP/include  -g   -o CMakeFiles/lmsfilter.dir/lmsfilter.cpp.o -c /home/natalia/disertation/datarecordings/lmsfilter.cpp",
   "file": "/home/natalia/disertation/datarecordings/lmsfilter.cpp"
 },
 {
