@@ -5,13 +5,20 @@
 #ifndef ECGFILTER_PARAMETERS_H
 #define ECGFILTER_PARAMETERS_H
 
-#define NINPUTS 25//11//this is the x-y-z accelerations inputs
-#define NLAYERS 5
-#define N1 25
-#define N2 20
-#define N3 15 
-#define N4 10
-#define N5 1
+#define NINPUTS 40//11//this is the x-y-z accelerations inputs
+#define NLAYERS 9
+
+#define N1 40
+#define N2 35
+#define N3 30 
+#define N4 25
+#define N5 20
+
+#define N6 15
+#define N7 10
+#define N8 5 
+#define N9 1
+
 //output layer has to always be 1 
 #define LEARNINGRATE 0.1
 

@@ -43,7 +43,7 @@ int main (int,char**)
 	const float cutoff_hemg = 10; //EMG starts from 10 Hz
 	hpemg.setup (samplingrate, cutoff_hemg);
 
-	FILE *finput = fopen("data/data2.21/bicep0.dat","rt");
+	FILE *finput = fopen("data/data2.21/bicepf.dat","rt");
 
     FILE *foutput = fopen("LMSfiltered_ecg.dat","wt");
 

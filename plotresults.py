@@ -67,23 +67,24 @@ time=datadnf[:,0]
 '''
 pl.figure(4)
 plot_FFT(raw_ecg,samplingFrequency)
-plot_FFT(in_ecg,samplingFrequency)
+plot_FFT(in_ecg/0.001,samplingFrequency)
 
 pl.title('ECG DNF fourier transform')
 
 pl.figure(5)
 plot_FFT(raw_emg,samplingFrequency)
-plot_FFT(in_emg,samplingFrequency)
+plot_FFT(in_emg/0.001,samplingFrequency)
 pl.title('EMG DNF fourier transform')
 '''
 
-pl.figure(1)
-pl.plot(time,in_ecg)
+pl.figure(6)
+#pl.plot(time,in_ecg)
 pl.plot(time,out_ecg)
 pl.title('Output DNF vs input prefiltered ECG data')
 pl.xlabel('time/sec')
 
-
+pl.figure(7)
+pl.plot(time,in_ecg)
 '''
 pl.figure(2)
 pl.plot(datadnf[:,0],datadnf[:,1])
