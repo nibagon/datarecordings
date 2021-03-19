@@ -18,14 +18,14 @@ int main (int,char**)
 {
 	int totalNINPUTS = NINPUTS;
 	//initialise network
-	int nNeurons[NLAYERS]={N1,N2,N3,N4,N5,N6,N7,N8,N9};//change this for th eno. of neurons
+	int nNeurons[NLAYERS]={N1,N2,N3,N4,N5,N6};//N7,N8,N9};//change this for th eno. of neurons
 	int* nNeuronsp=nNeurons;
 	Net* net = new Net(NLAYERS, nNeuronsp, totalNINPUTS);
 
 	// define gains
 	double errorGain = 1;
-	double outputGain = 1; //0.005; changes
-
+	double outputGain = 0.0000000005; //0.005; changes 0.000005 with 6 0.0000000005
+	
 	//initialise the network
     net->initWeights(Neuron::W_RANDOM, Neuron::B_NONE);
     net->setLearningRate(LEARNINGRATE);
@@ -57,8 +57,12 @@ int main (int,char**)
 
 	//buffer for the network inputs
 	double inputsDelayed[totalNINPUTS];
+	FILE *finput = fopen("data/data2.21/bicep0.dat","rt");//where data is extracted
+	//FILE *finput = fopen("data/data3.18/ECGarm2.dat","rt");
+
+	//FILE *finput = fopen("data/data2.21/bicepf.dat","rt");//where data is extracted
 	
-	FILE *finput = fopen("data/data2.21/bicepf.dat","rt");//where data is extracted
+	//FILE *finput = fopen("data/data2.09/bicepnoise.dat","rt");//where data is extracted
     FILE *foutput = fopen("ecg_filtered.dat","wt");//where data is saved
 
 	for(int i=0;;i++) 
@@ -80,8 +84,8 @@ int main (int,char**)
 		ecg100=stop100.filter(ecg50);
 		emg100=stop100.filter(emg50);
 
-		ecg_high=1 * hpecg.filter(ecg100);
-		emg_high=1 * hpemg.filter(emg100);
+		ecg_high=0.001* hpecg.filter(ecg100);//0.001
+		emg_high=0.001* hpemg.filter(emg100);
 
 		if (time > 2.5) {
 		/*	

@@ -13,7 +13,7 @@
 #include <math.h>
 
 #define NTAPS 100
-#define LEARNING_RATE 0.5//fid a way of calculating this learning rate 
+#define LEARNING_RATE 0.5//fid a way of calculating this learning rate 0.5 bicep
 
 int main (int,char**)
 {
@@ -23,12 +23,12 @@ int main (int,char**)
 
 	const float samplingrate = 250; // Hz
 
-	//Iir::RBJ::IIRNotch stop50;
-	Iir::Butterworth::BandStop<6>stop50;
+	Iir::RBJ::IIRNotch stop50;
+	//Iir::Butterworth::BandStop<6>stop50;
 	double centerFrequency50=50; //change this one depending on where you are taking it
 	double widthFrequency50=6;
-	stop50.setup(samplingrate,centerFrequency50,widthFrequency50);
-	//stop50.setup(samplingrate,centerFrequency50);
+	//stop50.setup(samplingrate,centerFrequency50,widthFrequency50);
+	stop50.setup(samplingrate,centerFrequency50);
 
 	Iir::Butterworth::BandStop<6>stop100;
 	double centerFrequency100=100; //change this one depending on where you are taking it
@@ -43,8 +43,8 @@ int main (int,char**)
 	const float cutoff_hemg = 10; //EMG starts from 10 Hz
 	hpemg.setup (samplingrate, cutoff_hemg);
 
-	FILE *finput = fopen("data/data2.21/bicepf.dat","rt");
-
+	FILE *finput = fopen("data/data2.21/bicep0.dat","rt");//the nice one
+	//FILE *finput = fopen("data/data3.18/ECGarm2.dat","rt");
     FILE *foutput = fopen("LMSfiltered_ecg.dat","wt");
 
 	for(int i=0;;i++) 
@@ -77,8 +77,8 @@ int main (int,char**)
 		ecg100=stop100.filter(ecg50);
 		emg100=stop100.filter(emg50);
 
-		ecg_high=1000 * hpecg.filter(ecg100);
-		emg_high=1000 * hpemg.filter(emg100);
+		ecg_high=1000 * hpecg.filter(ecg100);//1000 -100
+		emg_high=1000 * hpemg.filter(emg100);//1000 -100
 
 		if (time > 2.5) {
 		double canceller = fir.filter(emg_high); 

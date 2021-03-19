@@ -10,12 +10,12 @@ def clean_matrix(file,name):
     #clean ECG
     ECG=data[:,11]
     l, p = signal.butter(4, 120/(fs*2), 'low') #create filters
-    h, f = signal.butter(4, 10/(fs*2), 'hp') 
+    h, f = signal.butter(4, 1/(fs*2), 'hp') 
     ecg_low= sp.signal.lfilter(l,p,ECG) #clean signal
     ecg_hp= sp.signal.lfilter(h,f,ecg_low)
     #clean EMG
     EMG=data[:,12]
-    h, f = signal.butter(4, 50/(fs*2), 'hp') #different high pass filter
+    h, f = signal.butter(4, 10/(fs*2), 'hp') #different high pass filter
     emg_hp= sp.signal.lfilter(h,f,EMG)
     emg_low= sp.signal.lfilter(l,p,emg_hp)
     #create matrix
@@ -33,3 +33,5 @@ def extract_matrix(file,name):
     final=np.c_[data[:,0], final]
     np.savetxt(name,final)
     return final
+
+extract_matrix('data/data3.18/ECGarm2.tsv','data/data3.18/ECGarm2.dat')
