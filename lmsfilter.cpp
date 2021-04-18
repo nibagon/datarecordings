@@ -23,29 +23,31 @@ int main (int,char**)
 
 	const float samplingrate = 250; // Hz
 
-	Iir::RBJ::IIRNotch stop50;
-	//Iir::Butterworth::BandStop<6>stop50;
+	//Iir::RBJ::IIRNotch stop50;
+	Iir::Butterworth::BandStop<20>stop50;
 	double centerFrequency50=50; //change this one depending on where you are taking it
-	double widthFrequency50=6;
-	//stop50.setup(samplingrate,centerFrequency50,widthFrequency50);
-	stop50.setup(samplingrate,centerFrequency50);
+	double widthFrequency50=4;
+	int reqorder=4;
+	stop50.setup(samplingrate,centerFrequency50,widthFrequency50);
+	//stop50.setup(samplingrate,centerFrequency50,reqorder);
 
-	Iir::Butterworth::BandStop<6>stop100;
+	Iir::Butterworth::BandStop<20>stop100;
 	double centerFrequency100=100; //change this one depending on where you are taking it
-	double widthFrequency100=6;
+	double widthFrequency100=4;
 	stop100.setup(samplingrate,centerFrequency100,widthFrequency100);
 	
 	Iir::Butterworth::HighPass<2> hpecg;//maybe use the same
-	const float cutoff_hecg = 1; // start cleaning from 0.5 remember fundamental frequency of ECG starts from 1hz
+	const float cutoff_hecg = 0.5; // start cleaning from 0.5 remember fundamental frequency of ECG starts from 1hz
 	hpecg.setup (samplingrate, cutoff_hecg);
 
 	Iir::Butterworth::HighPass<2> hpemg;
 	const float cutoff_hemg = 10; //EMG starts from 10 Hz
 	hpemg.setup (samplingrate, cutoff_hemg);
 
-	FILE *finput = fopen("data/data2.21/bicep0.dat","rt");//the nice one
+	//FILE *finput = fopen("data/data2.21/bicep0.dat","rt");//the nice one
+	FILE *finput = fopen("data/lastrecordings/WeightB_N.dat","rt");//the nice one
 	//FILE *finput = fopen("data/data3.18/ECGarm2.dat","rt");
-    FILE *foutput = fopen("LMSfiltered_ecg.dat","wt");
+    FILE *foutput = fopen("2LMSfiltered_ecg.dat","wt");
 
 	for(int i=0;;i++) 
 	{
@@ -84,8 +86,8 @@ int main (int,char**)
 		double canceller = fir.filter(emg_high); 
 		double output_signal = ecg_high - canceller;
 		fir.lms_update(output_signal);
-												//0  ,1            ,2        ,3       ,4       ,5  ,6 
-		fprintf(foutput,"%e %e %e %e %e %e %e\n",time,output_signal,canceller,emg_high,ecg_high,ECG,EMG);
+												//0  ,1            ,2         ,3       ,4       ,5  ,6 
+		fprintf(foutput,"%e %e %e %e %e %e %e\n",time,output_signal,canceller,ecg_high,emg_high,ECG,EMG);
 		}
 	}
 	fclose(finput);

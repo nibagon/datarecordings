@@ -24,10 +24,10 @@ int main (int,char**)
 
 	// define gains
 	double errorGain = 1;
-	double outputGain = 0.0000000005; //0.005; changes 0.000005 with 6 0.0000000005
+	double outputGain = 1; //0.005; changes 0.000005 with 6 0.0000000005
 	
 	//initialise the network
-    net->initWeights(Neuron::W_RANDOM, Neuron::B_NONE);
+    net->initNetwork(Neuron::W_RANDOM, Neuron::B_NONE, Neuron::Act_Sigmoid); 
     net->setLearningRate(LEARNINGRATE);
 
 	/*
@@ -57,13 +57,13 @@ int main (int,char**)
 
 	//buffer for the network inputs
 	double inputsDelayed[totalNINPUTS];
-	FILE *finput = fopen("data/data2.21/bicep0.dat","rt");//where data is extracted
+	FILE *finput = fopen("data/lastrecordings/bicep.dat","rt");//where data is extracted
 	//FILE *finput = fopen("data/data3.18/ECGarm2.dat","rt");
 
 	//FILE *finput = fopen("data/data2.21/bicepf.dat","rt");//where data is extracted
 	
 	//FILE *finput = fopen("data/data2.09/bicepnoise.dat","rt");//where data is extracted
-    FILE *foutput = fopen("ecg_filtered.dat","wt");//where data is saved
+    FILE *foutput = fopen("1ecg_filtered.dat","wt");//where data is saved
 
 	for(int i=0;;i++) 
 	{
@@ -77,6 +77,11 @@ int main (int,char**)
 		double emg_high;
 		double emg50;
 		double emg100;
+		double ecg;
+        double emg;
+
+        ecg=0.001*ECG;
+        emg=0.001*EMG;
 
 		ecg50=stop50.filter(ECG);
 		emg50=stop50.filter(EMG);
@@ -97,7 +102,7 @@ int main (int,char**)
 		for (int i=totalNINPUTS; i>0; i--){
         	inputsDelayed[i]=inputsDelayed[i-1];
         }
-		inputsDelayed[0]=emg_high;
+		inputsDelayed[0]=emg;
 		//propagate the inputs
         double* inputsDelayedPointer = &inputsDelayed[0];
         net->setInputs(inputsDelayedPointer);
@@ -105,7 +110,7 @@ int main (int,char**)
         //get the network's output
         double outPut = net->getOutput(0) * outputGain;
         //workout the error
-        double leadError = (ecg_high - outPut) * errorGain;
+        double leadError = (ecg - outPut) * errorGain;
         //propagate the error
         net->setError(leadError);
         net->propError();
@@ -114,7 +119,7 @@ int main (int,char**)
         net->saveWeights();
         double weightDist = net->getWeightDistance();
 												//0  ,1         ,2     ,3       ,4       ,5  ,6 
-		fprintf(foutput,"%e %e %e %e %e %e %e\n",time,leadError,outPut,emg_high,ecg_high,ECG,EMG);
+		fprintf(foutput,"%e %e %e %e %e %e %e\n",time,leadError,outPut,emg,ecg,ECG,EMG);
 		}
 		
 	}
